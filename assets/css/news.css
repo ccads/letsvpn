@@ -1,0 +1,236 @@
+/* ===== 外层容器，控制整体宽度与居中 ===== */
+.news-container{
+  max-width: 880px;    /* 总宽度控制，留白效果 */
+  margin: 0 auto;      /* 居中 */
+  padding: 0 20px;     /* 左右内边距 */
+  box-sizing: border-box;
+}
+
+/* ===== 固定两列，不占满全屏 ===== */
+.news-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 两列 */
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* ===== 卡片基础 ===== */
+.news-card{
+  background: #fff;
+  border: 1px solid var(--border, #e9eef3);
+  border-radius: 12px;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 6px 20px rgba(31,49,71,.06);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.news-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(31,49,71,.10);
+  border-color: #dbe4ee;
+}
+
+/* 封面图比例控制 */
+.news-card img{
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+  background: #f6f8fb;
+}
+
+/* 文本区 */
+.news-card .txt{
+  padding: 14px 16px;
+  flex: 1;
+}
+.news-card .txt h4{
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: #153e7a;
+  font-weight: 600;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.news-card .txt .lead{
+  color: #4a5568;
+  font-size: 14px;
+  line-height: 1.65;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 日期栏 */
+.news-card .date{
+  padding: 8px 16px 14px;
+  color: #7a8a9b;
+  font-size: 13px;
+}
+
+/* 点击区域 */
+.news-card-link{
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 分页样式 */
+.pg{
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 18px;
+}
+.pg a, .pg span{
+  padding: 6px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #334155;
+  background: #fff;
+}
+.pg .on{
+  background: #1a73e8;
+  color: #fff;
+  border-color: #1a73e8;
+}
+
+/* 固定两列的卡片宽度 + 居中显示，不铺满整屏 */
+.news-grid{
+  display: grid;
+  /* 每列固定一个合适的宽度（可按你图的比例微调 420~520 都行） */
+  grid-template-columns: repeat(2, 380px);
+  gap: 24px;
+
+  /* 关键：让固定列宽的网格在宽屏里居中 */
+  justify-content: center;   /* 横向居中网格 */
+  margin: 0 auto;            /* 保底居中 */
+  padding: 0 16px;           /* 两侧留白 */
+}
+
+/* 标题居中 */
+h1 {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 24px;
+}
+
+/* 分页居中 */
+.pg {
+  display: flex;
+  justify-content: center; /* 居中分页按钮 */
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 24px;
+}
+.pg a,
+.pg span {
+  padding: 6px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #334155;
+  background: #fff;
+}
+.pg .on {
+  background: #1a73e8;
+  color: #fff;
+  border-color: #1a73e8;
+}
+
+/* —— 新闻详情页面：整体收窄且始终居中 —— */
+.page-narrow,
+.news-detail {
+  max-width: 800px !important;      /* 控制整体宽度 */
+  margin-left: auto !important;      /* 水平居中 */
+  margin-right: auto !important;
+  padding-left: 16px;                /* 两侧留白 */
+  padding-right: 16px;
+  box-sizing: border-box;
+}
+
+/* 标题与元信息 */
+.news-detail h1 { text-align:center; font-size:26px; margin: 12px 0 8px; }
+.news-detail .meta { text-align:center; color:#666; margin-bottom:20px; }
+
+/* 封面、摘要、正文统一风格 */
+.news-detail .cover {
+  width:100%;
+  aspect-ratio:16/9;
+  object-fit:cover;
+  border:1px solid #eee;
+  border-radius:12px;
+  display:block;
+  margin-bottom:20px;
+}
+.news-detail .desc,
+.news-detail .content {
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:12px;
+  padding:20px;
+  margin-top:16px;
+  line-height:1.75;
+  color:#222;
+}
+.news-detail p a { color:#1a73e8; text-decoration:none; }
+.news-detail p a:hover { text-decoration:underline; }
+
+/* —— 右侧悬浮栏：整体向下偏移 —— */
+/* 若你的 aside 用的是 position: sticky 或 fixed，这一条就能生效 */
+.home-aside-floating{
+  top: 108px !important;   /* 改这个数值即可：72~140px 都可以 */
+  z-index: 3;              /* 避免被头部或卡片覆盖 */
+}
+
+/* 如果不是 sticky/fixed，而是普通流式布局（relative/static），用这个辅助间距 */
+/*（若你本来就是 sticky/fixed，可以不加这一条） */
+.home-aside-floating.is-flow,
+body:not(.has-sticky-aside) .home-aside-floating{
+  margin-top: 24px !important;
+}
+
+/* 移动端靠上显示就好，不需要太大偏移 */
+@media (max-width: 1024px){
+  .home-aside-floating{
+    top: 0 !important;
+    margin-top: 12px !important;
+  }
+}
+
+/* 其它新闻区域 */
+.more-title{font-size:20px;font-weight:700;margin:28px 0 14px}
+.more-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:stretch}
+.more-grid .news-card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+@media (max-width:720px){.more-grid{grid-template-columns:1fr}}
+
+/* 让“其它新闻”标题居中 */
+.news-detail .more-title{
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 28px 0 14px;
+}
+.aside-title{display:block;text-decoration:none;color:inherit}
+
+/* 小屏适配：1140px 以下，两列自适应；720px 以下一列 */
+@media (max-width: 1140px){
+  .news-grid{
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+  }
+}
+@media (max-width: 720px){
+  .news-grid{
+    grid-template-columns: 1fr;
+  }
+}
+

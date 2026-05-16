@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>快连VPN如何开启自动连接功能？</title>
+  <meta name="description" content="打开快连VPN客户端，进入“设置”页面，找到“启动时自动连接”选项。勾选后，每次系统开机时，VPN都会在后台自动运行并连接到上次使用的节点。 用户还可以选择“智能自动连接”，由系统根据网络环境自动匹配最佳线路，确保速度与安全兼顾。">
+  <link rel="canonical" href="https://letssvpn.app/blog/vpn-16.html">
+
+  <!-- Favicon / App icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png_v=1">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png_v=1">
+  <link rel="shortcut icon" href="../favicon.ico_v=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png_v=1">
+  <meta name="theme-color" content="#1a73e8">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "快连VPN",
+        "url": "/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "/assets/img/logo.png",
+          "width": 512,
+          "height": 512
+        },
+        "sameAs": [
+          "https://www.facebook.com/",
+          "https://twitter.com/",
+          "https://www.youtube.com/"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "name": "快连VPN下载",
+        "url": "/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "/?s={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="快连VPN如何开启自动连接功能？">
+  <meta property="og:description" content="打开快连VPN客户端，进入“设置”页面，找到“启动时自动连接”选项。勾选后，每次系统开机时，VPN都会在后台自动运行并连接到上次使用的节点。 用户还可以选择“智能自动连接”，由系统根据网络环境自动匹配最佳线路，确保速度与安全兼顾。">
+  <meta property="og:url" content="https://letssvpn.app/blog/vpn-16.html">
+  <meta property="og:image" content="../uploads/news/20250924_602635fb72da.png">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="快连VPN如何开启自动连接功能？">
+  <meta name="twitter:description" content="打开快连VPN客户端，进入“设置”页面，找到“启动时自动连接”选项。勾选后，每次系统开机时，VPN都会在后台自动运行并连接到上次使用的节点。 用户还可以选择“智能自动连接”，由系统根据网络环境自动匹配最佳线路，确保速度与安全兼顾。">
+  <meta name="twitter:image" content="../uploads/news/20250924_602635fb72da.png">
+  <link rel="stylesheet" href="../assets/css/base.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+
+    <a class="logo" href="../index.html">
+      <img src="../assets/img/web_icon.svg" alt="快连VPN" onerror="this.style.display='none'">
+      <strong>快连VPN</strong>
+    </a>
+
+    <nav class="nav">
+      <a href="../index.html">首页</a>
+      <a href="../news.php.html">博客</a>
+      <a href="../download.php.html">快连VPN下载</a>
+    </nav>
+
+  </div>
+</header>
+
+<main class="site-main">
+
+<!-- —— 详情页局部样式（标题/更多新闻网格） —— -->
+<style>
+  /* 如果你的 news.css 已包含 .news-detail 的收窄，这里可省略；以下只补“其它新闻”样式 */
+  .more-title{
+    font-size:20px;
+    font-weight:700;
+    margin:28px 0 14px;
+  }
+  .more-grid{
+    display:grid;
+    grid-template-columns: repeat(2, minmax(0,1fr)); /* 两列 */
+    gap:16px;
+    align-items:stretch;
+  }
+  .more-grid .news-card img{
+    width:100%;
+    aspect-ratio:16/9;
+    object-fit:cover;
+    display:block;
+  }
+  @media (max-width: 720px){
+    .more-grid{ grid-template-columns: 1fr; } /* 小屏 1 列 */
+  }
+</style>
+
+<nav class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"
+     style="font-size:14px;color:#666;margin:6px 0 14px;">
+    <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a itemprop="item" href="../index.html"
+         style="color:#1a73e8;text-decoration:none;">
+        <span itemprop="name">首页</span>
+      </a>
+        <meta itemprop="position" content="1">
+  </span>
+  <span style="margin:0 6px;color:#aaa">›</span>    <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a itemprop="item" href="../news.php.html"
+         style="color:#1a73e8;text-decoration:none;">
+        <span itemprop="name">博客</span>
+      </a>
+        <meta itemprop="position" content="2">
+  </span>
+  <span style="margin:0 6px;color:#aaa">›</span>    <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" style="color:#333">快连VPN如何开启自动连接功能？</span>
+        <meta itemprop="position" content="3">
+  </span>
+    </nav>
+
+<!-- 右侧：（与中间块分离，悬停在右边） -->
+<aside class="home-aside-floating">
+  <div class="aside-box">
+    <a class="aside-title" href="../news.php.html">近期博客</a>
+
+          <ul class="aside-news">
+                  <li>
+            <div class="d">2026年3月31日</div>
+            <a class="t" href="vpn-99.html">快连VPN怎么解绑设备？</a>
+          </li>
+                  <li>
+            <div class="d">2026年3月28日</div>
+            <a class="t" href="vpn-99.html">快连VPN的收费方式是什么？</a>
+          </li>
+                  <li>
+            <div class="d">2026年3月27日</div>
+            <a class="t" href="vpn-ip-3.html">快连VPN是否支持静态IP？</a>
+          </li>
+                  <li>
+            <div class="d">2026年3月25日</div>
+            <a class="t" href="vpn-99.html">快连VPN手机版怎么用？</a>
+          </li>
+                  <li>
+            <div class="d">2026年3月24日</div>
+            <a class="t" href="google-play-vpn.html">Google Play能下载快连VPN吗？</a>
+          </li>
+                  <li>
+            <div class="d">2026年3月22日</div>
+            <a class="t" href="vpn-surfshark-2.html">快连VPN和Surfshark区别大吗？</a>
+          </li>
+                  <li>
+            <div class="d">2026年3月21日</div>
+            <a class="t" href="vpn-99.html">快连VPN如何切换最佳节点？</a>
+          </li>
+                  <li>
+            <div class="d">2026年3月19日</div>
+            <a class="t" href="vpn-99.html">国外访问时快连VPN很慢怎么办？</a>
+          </li>
+              </ul>
+      </div>
+</aside>
+
+<!-- —— 内容容器（关键：不铺满、居中） —— -->
+<div class="page-narrow news-detail">
+  <h1>快连VPN如何开启自动连接功能？</h1>
+  <div class="meta">2025年9月24日</div>
+
+      <img class="cover"
+         src="../uploads/news/20250924_602635fb72da.png"
+         alt="快连VPN如何开启自动连接功能？">
+  
+      <div class="desc">打开快连VPN客户端，进入“设置”页面，找到“启动时自动连接”选项。勾选后，每次系统开机时，VPN都会在后台自动运行并连接到上次使用的节点。 用户还可以选择“智能自动连接”，由系统根据网络环境自动匹配最佳线路，确保速度与安全兼顾。</div>
+  
+  <div class="content">
+    <h1>快连VPN如何开启自动连接功能？</h1>
+<p><small>发布时间：2025/9/24 &mdash; 作者：admin &mdash; 来源：<a href="../index.html">快连VPN</a></small></p>
+<div class="article-content" style="margin-top: 20px; line-height: 1.8;">
+<p>很多用户在使用VPN时，会遇到一个常见问题：每次切换网络或重新开机，都需要手动点击才能完成连接。这不仅增加了操作步骤，还可能在关键时刻因忘记开启而导致数据暴露。为了解决这一困扰，<strong>快连VPN</strong>提供了自动连接功能。通过合理设置，用户可以让VPN在系统启动、网络切换或进入不安全环境时自动启动，保障网络安全与隐私不间断。本文将为你详细讲解快连VPN如何开启自动连接功能，以及在不同场景下的最佳实践。</p>
+<h2>目录</h2>
+<div style="border: 1px solid #ccc; padding: 15px; background: #fafafa; margin: 20px 0;">
+<ol>
+<li><a href="#section1">为什么需要开启快连VPN自动连接功能</a></li>
+<li><a href="#section2">如何在不同设备上开启自动连接</a>
+<ol>
+<li><a href="#section2-1">2.1 Windows系统中的设置方法</a></li>
+<li><a href="#section2-2">2.2 macOS系统中的设置方法</a></li>
+<li><a href="#section2-3">2.3 Android设备的设置方法</a></li>
+<li><a href="#section2-4">2.4 iOS设备的设置方法</a></li>
+</ol>
+</li>
+<li><a href="#section3">自动连接功能的高级配置</a></li>
+<li><a href="#section4">常见使用场景与应用技巧</a></li>
+<li><a href="#section5">开启自动连接后的隐私与安全保障</a></li>
+<li><a href="#section6">优化体验的小技巧</a></li>
+<li><a href="#section7">常见问题与解决方案</a></li>
+<li><a href="#section8">未来趋势：智能化自动连接的发展方向</a></li>
+<li><a href="#section9">总结：快连VPN自动连接让安全更省心</a></li>
+</ol>
+</div>
+<h2 id="section1">一、为什么需要开启快连VPN自动连接功能</h2>
+<p>在实际使用中，很多人会因为手动开启VPN的繁琐而忽略隐私保护。开启自动连接后，VPN会在设备联网时自动启用，避免忘记连接导致的风险。 此外，自动连接还能在公共Wi-Fi环境下第一时间保护用户，防止数据被窃取。对频繁切换网络的用户来说，这一功能不仅节省时间，也极大提升了安全性和便利性。</p>
+<h2 id="section2">二、如何在不同设备上开启自动连接</h2>
+<h3 id="section2-1">2.1 Windows系统中的设置方法</h3>
+<p>打开快连VPN客户端，进入&ldquo;设置&rdquo;页面，找到&ldquo;启动时自动连接&rdquo;选项。勾选后，每次系统开机时，VPN都会在后台自动运行并连接到上次使用的节点。 用户还可以选择&ldquo;智能自动连接&rdquo;，由系统根据网络环境自动匹配最佳线路，确保速度与安全兼顾。</p>
+<h3 id="section2-2">2.2 macOS系统中的设置方法</h3>
+<p>在Mac系统上，用户可以通过系统偏好设置或快连VPN客户端进行配置。进入客户端设置界面，启用&ldquo;开机自启&rdquo;功能，再选择&ldquo;自动连接到推荐节点&rdquo;。 这样，无论你是在家中、公司还是公共场所，VPN都会在系统启动后自动运行。</p>
+<h3 id="section2-3">2.3 Android设备的设置方法</h3>
+<p>在Android手机上，打开快连VPN应用，进入&ldquo;连接设置&rdquo;，选择&ldquo;网络切换时自动连接&rdquo;功能。 一旦用户从Wi-Fi切换到移动数据，VPN会自动保持加密状态，避免数据传输中出现裸奔风险。 另外，Android版本还支持&ldquo;指定应用自动走VPN&rdquo;，非常适合高频使用的办公或学习应用。</p>
+<h3 id="section2-4">2.4 iOS设备的设置方法</h3>
+<p>在iPhone或iPad上，进入快连VPN应用的设置页面，找到&ldquo;自动连接&rdquo;选项，选择&ldquo;始终自动&rdquo;或&ldquo;仅在不安全网络下自动连接&rdquo;。 推荐用户开启&ldquo;仅在不安全网络下&rdquo;模式，这样既能保障安全，又能在可信任的网络环境下节省资源。</p>
+<h2 id="section3">三、自动连接功能的高级配置</h2>
+<p>快连VPN不仅提供了基础的自动连接，还支持一些高级配置： - <strong>分应用自动连接：</strong>指定某些应用始终通过VPN连接。 - <strong>智能识别网络：</strong>当检测到公共Wi-Fi或未知网络时，自动启用VPN。 - <strong>节点偏好设置：</strong>用户可以预先设定常用节点，系统会在自动连接时优先选择。 这些高级功能让自动连接不仅是&ldquo;省心&rdquo;，更能做到&ldquo;智能&rdquo;。</p>
+<p><iframe title="YouTube video player" src="https://www.youtube.com/embed/Z9ZcdivNXfQ?si=cDw7rcE4wyGJpaFS" width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen"></iframe></p>
+<h2 id="section4">四、常见使用场景与应用技巧</h2>
+<p>- <strong>远程办公：</strong>开启自动连接后，无论在公司还是出差途中，办公文件都能通过加密通道安全传输。 - <strong>跨境学习：</strong>在不同网络环境中切换时，始终保持访问海外课程和资料的稳定性。 - <strong>公共场所：</strong>在机场、咖啡馆等地方使用公共Wi-Fi时，自动连接功能能第一时间保护隐私。 这些应用场景说明，开启自动连接不仅能提升效率，也让使用体验更安心。</p>
+<h2 id="section5">五、开启自动连接后的隐私与安全保障</h2>
+<p>快连VPN的自动连接功能不仅仅是为了省事，更是隐私安全的坚实保障。开启后，每次联网的第一秒起，数据就会通过加密通道传输，避免泄露风险。 同时，配合零日志政策和DNS防护机制，用户即便在多设备间切换，也无需担心隐私被追踪。</p>
+<h2 id="section6">六、优化体验的小技巧</h2>
+<p>为了让自动连接功能发挥最大作用，建议用户：</p>
+<ol>
+<li>定期更新客户端，获取最新优化与补丁。</li>
+<li>合理设置节点偏好，避免频繁切换带来的延迟。</li>
+<li>在多设备中分配不同的连接策略，确保主设备优先。</li>
+</ol>
+<p>这些小技巧能让你在日常使用中获得更顺畅的体验。</p>
+<h2 id="section7">七、常见问题与解决方案</h2>
+<p>- <strong>为什么自动连接没有生效？</strong> 请检查是否勾选了相关选项，并确保客户端有启动权限。 - <strong>开机后自动连接太慢怎么办？</strong> 可以在设置中关闭不必要的后台应用，减少启动负担。 - <strong>如何避免误触发？</strong> 建议开启&ldquo;仅在不安全网络下自动连接&rdquo;，提升灵活性。 这些问题通过合理调整，都能得到有效解决。</p>
+<h2 id="section8">八、未来趋势：智能化自动连接的发展方向</h2>
+<p>未来，快连VPN可能会结合人工智能，自动识别用户的使用习惯和网络环境，从而更加精准地控制自动连接策略。比如，在办公时间优先连接安全节点，在娱乐时间优先选择高速节点。 这种智能化的发展趋势，将让自动连接从&ldquo;被动保护&rdquo;变成&ldquo;主动服务&rdquo;。</p>
+<h2 id="section9">九、总结：快连VPN自动连接让安全更省心</h2>
+<p>快连VPN的自动连接功能，解决了用户因忘记开启而造成隐私风险的问题，同时提升了跨境访问和日常上网的效率。通过不同设备的灵活设置和高级功能的应用，用户可以获得更加智能、全面的网络保护。 在数字化生活节奏不断加快的今天，自动连接功能无疑是让VPN更贴心、更实用的重要设置。掌握本文的操作方法，你也能轻松开启快连VPN自动连接，享受随时随地的安全保障。</p>
+</div>  </div>
+
+  <p><a href="../news.php.html">← 返回列表</a></p>
+
+      <h2 class="more-title">快连VPN 其它博客</h2>
+    <div class="news-grid more-grid">
+              <a class="news-card-link" href="/blog/vpn-72.html">
+          <div class="news-card">
+                          <img src="../assets/img/vpn_img.png" alt="快连VPN 对网络不稳定环境友好吗？">
+                        <div class="txt">
+              <h4>快连VPN 对网络不稳定环境友好吗？</h4>
+                              <div class="lead">网络不稳定并不只是“网速慢”这么简单，它通常是由丢包、抖动、延迟飘忽、频繁切换Wi-Fi/蜂窝、DNS解析不稳定、路由器质量差、运营商限速波动等多因素叠加造成的。VPN在这种环境里会被放大考验：连接握手更容易失败、隧道更容易掉线、</div>
+                          </div>
+            <div class="date">2025年12月23日</div>
+          </div>
+        </a>
+              <a class="news-card-link" href="/blog/vpn-17.html">
+          <div class="news-card">
+                          <img src="../assets/img/vpn_img.png" alt="快连VPN如何保护隐私数据不被泄露？">
+                        <div class="txt">
+              <h4>快连VPN如何保护隐私数据不被泄露？</h4>
+                              <div class="lead">快连VPN不仅仅是一个技术工具，它在各种使用场景中都能发挥重要作用：
+
+跨境访问：卖家登录电商后台时，避免因IP暴露而被平台误判为违规操作。
+移动办公：员工在外地或公共WiFi下办公，VPN保障数据不被窃听。
+社交媒体：在使用社交平台时，快连VPN避免了用户行为被精准追踪。
+金融交易：在网银或第三方支付操作时，VPN加密为资金安全提供多一重保障。
+
+这些应用场景说明，快连VPN并非只在技术层面有价值，更能直接改善用户日常的隐私安全体验。</div>
+                          </div>
+            <div class="date">2025年9月25日</div>
+          </div>
+        </a>
+              <a class="news-card-link" href="/blog/vpn-14.html">
+          <div class="news-card">
+                          <img src="../assets/img/vpn_img.png" alt="更快更稳的体验，来自快连VPN">
+                        <div class="txt">
+              <h4>更快更稳的体验，来自快连VPN</h4>
+                              <div class="lead">在信息高速发展的时代，网络已经不只是工作工具，更是学习、娱乐和生活中不可或缺的一部分。然而，当网络卡顿、隐私泄露或访问受限成为常态时，用户对高效、安全和稳定的需求愈发强烈。快连VPN正是许多人开启“更快更稳”网络体验的第一步</div>
+                          </div>
+            <div class="date">2025年9月21日</div>
+          </div>
+        </a>
+              <a class="news-card-link" href="/blog/vpn-5.html">
+          <div class="news-card">
+                          <img src="../assets/img/vpn_img.png" alt="上网隐私保护全解｜VPN为何不可或缺">
+                        <div class="txt">
+              <h4>上网隐私保护全解｜VPN为何不可或缺</h4>
+                              <div class="lead">在数字化时代，上网已经成为我们生活中不可或缺的一部分。从日常沟通到远程办公，从购物支付到娱乐影音，几乎所有行为都依赖互联网。然而，随之而来的问题是：我们的上网隐私是否得到了真正的保护？在数据泄露频发、黑客攻击频繁的今天，如何保障个人信息不被滥用，已经成为用户关注的焦点。</div>
+                          </div>
+            <div class="date">2025年8月30日</div>
+          </div>
+        </a>
+          </div>
+  </div>
+
+<link rel="stylesheet" href="../assets/css/news.css">
+  </main>
+
+<footer class="wa-lite-footer" aria-label="网站底部导航">
+  <div class="wa-lite__inner">
+
+    <!-- 左侧三列导航 -->
+    <nav class="wa-lite__col" aria-label="关于快连VPN">
+      <h4 class="wa-lite__title">关于快连VPN</h4>
+      <ul class="wa-lite__list">
+        <li>
+          <a class="wa-lite__link" href="../download.php.html" title="快连VPN下载与安装指引">
+            下载与安装
+          </a>
+        </li>
+        <li>
+          <a class="wa-lite__link" href="../news.php.html" title="快连VPN使用教程与更新">
+            使用教程与更新
+          </a>
+        </li>
+        <li>
+          <a class="wa-lite__link" href="../news.php.html" title="快连VPN服务器节点列表与连接建议">
+            服务器节点列表
+          </a>
+        </li>
+        <li>
+          <a class="wa-lite__link" href="../terms.php.html" title="快连VPN服务条款">
+            服务条款
+          </a>
+        </li>
+        <li>
+          <a class="wa-lite__link" href="../terms.php.html" title="快连VPN隐私政策">
+            隐私政策
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+
+
+  <div class="dl-hero__content">
+    <h1 id="dl-h1">下载适用于 Windows 的快连VPN官方客户端</h1>
+    <p id="dl-desc">Windows 版快连VPN：一键安装、加密传输与全球高速节点，稳定低延迟</p>
+    <div class="dl-hero__cta">
+      <a id="dl-link" class="btn-primary"
+         href="/_dl.php?t=win"
+                  rel="nofollow">立即下载</a>
+      <div class="dl-hero__sub">免费试用 3 天 · 中文界面 · 支持自动选点与测速</div>
+    </div>
+    <div class="dl-hero__note">
+      没找到你的系统？查看 <a href="#sysreq">系统要求与兼容性</a>，或前往 <a href="#faq">常见问题</a> 获取安装与排障指南。
+    </div>
+  </div>
+</section>
+
+
+    <nav class="wa-lite__col" aria-label="使用帮助">
+      <h4 class="wa-lite__title">使用帮助</h4>
+      <ul class="wa-lite__list">
+        <li><a class="wa-lite__link" href="../faq.php.html" title="常见问题与故障排查">常见问题（FAQ）</a></li>
+        <li><a class="wa-lite__link" href="../news.php.html" title="安装教程与配置指南">安装教程与配置</a></li>
+        <li><a class="wa-lite__link" href="../news.php.html" title="更新日志与版本说明">更新日志</a></li>
+        <li><a class="wa-lite__link" href="../news.php.html" title="速度优化与节点选择">速度优化与节点选择</a></li>
+      </ul>
+    </nav>
+
+    <div class="wa-lite__brand">
+      <div class="wa-lite__logo">
+        <img src="../assets/img/logo.png" alt="快连VPN 标志" class="wa-lite__logo-img" loading="lazy">
+        <span class="wa-lite__logo-text">快连VPN</span>
+      </div>
+
+      <!-- 品牌补充一句话，增强语义相关性 -->
+      <p class="wa-lite__sub">
+        提供 <strong>快连VPN下载</strong> 与 <strong>电脑客户端/安卓/iOS</strong> 使用指南，支持 Windows、macOS、Android、iOS 与 Linux，
+        通过加密传输与智能选点，帮助你稳定低延迟连接全球网络。
+      </p>
+
+<div class="wa-lite__btns">
+  <a class="wa-lite__btn" href="/download/vpns-3201.zip" aria-label="快连VPN iOS 下载">
+    <img class="wa-lite__btn-icon" src="../assets/img/icon_ios.svg" alt="iOS" loading="lazy">
+    <span class="wa-lite__btn-text">
+      <em>Download on the</em>
+      <strong>App&nbsp;Store</strong>
+    </span>
+  </a>
+
+  <a class="wa-lite__btn" href="/download/vpns-3201.zip" aria-label="快连VPN Android 下载">
+    <img class="wa-lite__btn-icon" src="../assets/img/icon_android.svg" alt="Android" loading="lazy">
+    <span class="wa-lite__btn-text">
+      <em>Get it on</em>
+      <strong>Google&nbsp;Play</strong>
+    </span>
+  </a>
+</div>
+
+<div class="wa-lite__friendlinks">
+  <span class="wa-lite__friendlinks-title">友情链接：</span>
+  <a href="https://www.stelegram.com/" target="_blank" rel="noopener noreferrer">telegram</a>
+  <a href="https://www.safew8.com/" target="_blank" rel="noopener noreferrer">safew</a>
+  <a href="https://www.meiqialx.com/" target="_blank" rel="noopener noreferrer">美洽</a>
+  <a href="https://www.sigua001.com/" target="_blank" rel="noopener noreferrer">丝瓜下载</a>
+</div>
+    </div>
+
+  </div>
+</footer>
+
+<footer class="wa-lite-footer__bar">
+  <div class="wa-lite__bar-inner">
+    <div class="wa-lite__copy">
+      Copyright © 2007–2026, UDITech Limited. All rights reserved.
+      <span class="wa-lite__addr">
+        Room 1003, 10th Floor, Tower 1, Lippo Center, 89 Queensway, Admiralty, Hong&nbsp;Kong
+      </span>
+      · <a class="wa-lite__bar-link" href="../sitemap.xml" title="网站地图 XML">XML 地图</a>
+      · <a class="wa-lite__bar-link" href="../rss.xml" title="订阅本站 RSS">RSS 订阅</a>
+    </div>
+  </div>
+</footer>
+<link rel="stylesheet" href="../assets/css/footer.css">
+<script defer src="../assets/js/hero-float.js"></script>
+
+</body>
+</html>

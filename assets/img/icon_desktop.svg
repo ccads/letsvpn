@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 30 30">
+  <!-- Generator: Adobe Illustrator 29.0.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 192)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: url(#_未命名的渐变_9);
+        fill-rule: evenodd;
+      }
+
+      .st1 {
+        fill: url(#_未命名的渐变_91);
+      }
+    </style>
+    <linearGradient id="_未命名的渐变_9" data-name="未命名的渐变 9" x1="11" y1="23" x2="20" y2="23" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e844a6"/>
+      <stop offset="0" stop-color="#e244aa"/>
+      <stop offset=".2" stop-color="#d247b5"/>
+      <stop offset=".3" stop-color="#b74bc8"/>
+      <stop offset=".4" stop-color="#9250e2"/>
+      <stop offset=".5" stop-color="#7655f7"/>
+      <stop offset=".5" stop-color="#7556f7"/>
+      <stop offset=".6" stop-color="#637af7"/>
+      <stop offset=".8" stop-color="#5694f7"/>
+      <stop offset=".9" stop-color="#4ea4f7"/>
+      <stop offset="1" stop-color="#4caaf7"/>
+    </linearGradient>
+    <linearGradient id="_未命名的渐变_91" data-name="未命名的渐变 9" x1="6" y1="14.5" x2="25" y2="14.5" xlink:href="#_未命名的渐变_9"/>
+  </defs>
+  <path class="st0" d="M12,22h7c.6,0,1,.4,1,1h0c0,.6-.4,1-1,1h-7c-.6,0-1-.4-1-1h0c0-.6.4-1,1-1Z"/>
+  <rect class="st1" x="6" y="8" width="19" height="13" rx="2" ry="2"/>
+</svg>

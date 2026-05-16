@@ -1,0 +1,144 @@
+/* /assets/css/footer.css */
+/* 仅作用于页脚区域，避免全站污染 */
+.wa-lite-footer{
+  --footer-bg: #2f3e5a;        /* 背景深蓝（可按需微调） */
+  --footer-fg: #d7e2f2;        /* 主文字 */
+  --footer-fg-dim: #a9b7cd;    /* 次级文字 */
+  --footer-link: #dce7ff;      /* 链接色 */
+  --footer-link-hov: #ffffff;  /* 链接悬停 */
+  --footer-line: rgba(255,255,255,.12);
+  --btn-bg: rgba(255,255,255,.08);
+  --btn-bg-hov: rgba(255,255,255,.14);
+  --btn-fg: #f0f4ff;
+
+  background: var(--footer-bg);
+  color: var(--footer-fg);
+  padding: 56px 20px 40px;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.wa-lite-footer a{
+  color: var(--footer-link);
+  text-decoration: none;
+}
+.wa-lite-footer a:hover{ color: var(--footer-link-hov); }
+
+/* 内部最大宽度容器 */
+.wa-lite__inner{
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1.1fr 1fr 1.3fr; /* 三列导航 + 右侧品牌 */
+  gap: 32px 28px;
+  align-items: start;
+}
+
+/* 栏标题与列表 */
+.wa-lite__title{
+  margin: 0 0 14px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #eef4ff;
+}
+.wa-lite__list{ list-style: none; margin: 0; padding: 0; }
+.wa-lite__list li{ margin: 8px 0; }
+.wa-lite__link{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--footer-fg);
+  opacity: .9;
+}
+.wa-lite__link:hover{ opacity: 1; text-decoration: underline; }
+
+/* 产品列表中使用到的小图标（仅用你现有的三个SVG） */
+.wa-lite__icon{
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  flex: 0 0 18px;
+  vertical-align: -3px;
+  opacity: .95;
+}
+
+/* 右侧品牌区 */
+.wa-lite__brand{
+  justify-self: end;
+  text-align: left;
+  max-width: 360px;
+}
+.wa-lite__logo{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.wa-lite__logo-img{
+  width: 40px; height: 40px; border-radius: 8px; display: block;
+}
+.wa-lite__logo-text{
+  font-size: 18px; font-weight: 700; letter-spacing: .5px; color: #ffffff;
+}
+
+/* 下载按钮（纯文本+SVG，无底图） */
+.wa-lite__btns{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 10px;
+}
+.wa-lite__btn{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  border: 1px solid var(--footer-line);
+  transition: background .2s ease, transform .08s ease;
+  will-change: transform;
+}
+.wa-lite__btn:hover{ background: var(--btn-bg-hov); transform: translateY(-1px); }
+.wa-lite__btn-icon{ width: 22px; height: 22px; flex: 0 0 22px; }
+.wa-lite__btn-text{ display: inline-flex; flex-direction: column; line-height: 1.1; }
+.wa-lite__btn-text em{ font-style: normal; font-size: 11px; opacity: .9; }
+.wa-lite__btn-text strong{ font-size: 15px; }
+
+/* 底部细横条 */
+.wa-lite-footer__bar{
+  background: var(--footer-bg);
+  border-top: 1px solid var(--footer-line);
+}
+.wa-lite__bar-inner{
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 14px 20px 26px;
+  color: var(--footer-fg-dim);
+  font-size: 13px;
+}
+.wa-lite__bar-link{ color: var(--footer-link); }
+.wa-lite__bar-link:hover{ color: var(--footer-link-hov); }
+.wa-lite__copy{ display: block; }
+.wa-lite__addr{ margin-left: 6px; }
+
+/* 响应式 */
+@media (max-width: 1080px){
+  .wa-lite__inner{
+    grid-template-columns: 1fr 1fr;
+  }
+  .wa-lite__brand{ justify-self: start; max-width: none; }
+}
+@media (max-width: 640px){
+  .wa-lite-footer{ padding: 40px 16px 28px; }
+  .wa-lite__inner{
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .wa-lite__btns{
+    grid-template-columns: 1fr;
+  }
+  .wa-lite__logo-img{ width: 36px; height: 36px; }
+  .wa-lite__btn{ padding: 12px; }
+}

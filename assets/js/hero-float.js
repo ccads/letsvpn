@@ -1,0 +1,93 @@
+/* /assets/js/home-effects.js */
+(() => {
+  "use strict";
+
+  const prefersReduced =
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReduced) return;
+
+  const heroImg =
+    document.querySelector(".wa-hero__image img") ||
+    document.querySelector(".device-mac img") ||
+    document.querySelector(".home-logo");
+
+  if (!heroImg) return;
+
+  heroImg.style.willChange = "transform";
+  heroImg.style.transformOrigin = "50% 60%";
+  heroImg.style.transition = "transform 0.18s linear";
+
+  // 更高级的上下漂浮参数
+  const A = {
+    y1: 12, // 主漂浮幅度
+    y2: 3.5, // 次级细微呼吸幅度
+    speed1: 0.00095,
+    speed2: 0.0019,
+  };
+
+  const seed = Math.random() * 2000;
+  let rafId = 0;
+  let startTime = 0;
+
+  function easeOutCubic(x) {
+    return 1 - Math.pow(1 - x, 3);
+  }
+
+  function tick(t) {
+    if (!startTime) startTime = t;
+
+    const elapsed = t - startTime;
+    const intro = Math.min(1, elapsed / 1400); // 1.4秒柔和进入
+    const introEase = easeOutCubic(intro);
+
+    const tt = t + seed;
+
+    // 双层正弦叠加，只做上下运动，更自然
+    const y =
+      (Math.sin(tt * A.speed1) * A.y1 + Math.sin(tt * A.speed2) * A.y2) *
+      introEase;
+
+    heroImg.style.transform = `translate3d(0, ${y.toFixed(2)}px, 0)`;
+
+    rafId = requestAnimationFrame(tick);
+  }
+
+  rafId = requestAnimationFrame(tick);
+
+  // 页面切到后台就停，省资源；回来继续
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      cancelAnimationFrame(rafId);
+      rafId = 0;
+    } else if (!rafId) {
+      rafId = requestAnimationFrame(tick);
+    }
+  });
+
+  /* --------- 导航栏：顶部透明，下拉后显示渐变背景 --------- */
+  (() => {
+    const header = document.querySelector(".site-header");
+    if (!header) return;
+
+    const THRESHOLD = 12;
+    let ticking = false;
+
+    const update = () => {
+      const y = window.scrollY || document.documentElement.scrollTop || 0;
+      header.classList.toggle("is-scrolled", y > THRESHOLD);
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("load", update);
+    update();
+  })();
+})();
+
